@@ -6,8 +6,8 @@ services:
     restart: always # This will be ignored if we deploy in docker swarm
     environment:
     - MONGO_DB_HOSTNAME=mongo
-    - MONGO_DB_USERNAME=devdb
-    - MONGO_DB_PASSWORD=devuser
+    - MONGO_DB_USERNAME=devuser
+    - MONGO_DB_PASSWORD=devpass
     ports:
       - 8080:8080
     working_dir: /opt/app
@@ -28,7 +28,7 @@ services:
   mongo:
     image: mongo
     environment:
-    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_USERNAME=devuser
     - MONGO_INITDB_ROOT_PASSWORD=devpass
     volumes:
       - springvolume:/data/db
