@@ -1,6 +1,6 @@
 # Replication Controller for springapp
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: spring-controller
 spec:
@@ -39,8 +39,8 @@ spec:
     app: springboot
 ---
 # Mongo RC with host path Volume
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: mongo-controller
 spec:
