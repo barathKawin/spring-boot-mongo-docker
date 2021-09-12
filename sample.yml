@@ -1,38 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: springdeployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: springboot
-  template:
-    metadata:
-      labels:
-        app: springboot
-    spec:
-      containers:
-      - image: barathkawin/spring-boot-application:1
-        name: springboot
-        ports:
-        - containerPort: 8080  
-        env:
-        - name: MONGO_DB_HOSTNAME
-          value: mongo
-        - name: MONGO_INITDB_ROOT_USERNAME
-          value: springapp
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          value: mongodb@123
----
 apiVersion: v1
-kind: Service
+kind: Pod
 metadata:
-  name: springsvc
+  name: springpod
 spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
-  selector:
-    app: springboot
+   containers:
+   - name : springappcontainer
+     image: barathkawin/spring-boot-application:1
+     ports:
+     - containerPort: 8080  
+   
