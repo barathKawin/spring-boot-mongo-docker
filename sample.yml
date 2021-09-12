@@ -1,15 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring
+  name: springdeployment
 spec:
   replicas: 1
   selector:
-    app: springboot
+    matchLabels:
+      app: springboot
   template:
     metadata:
       labels:
-        app: spring
+        app: springboot
     spec:
       containers:
       - image: barathkawin/spring-boot-application:1
@@ -27,11 +28,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: spring
+  name: springsvc
 spec:
   type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: spring
+    app: springboot
